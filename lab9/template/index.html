@@ -1,0 +1,46 @@
+<html>
+<head>
+    <style>
+        
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #ffffff;
+            
+        }
+        body {
+            background: url('https://catherineasquithgallery.com/uploads/posts/2021-12/1639748658_80-catherineasquithgallery-com-p-rozovii-fon-s-dengami-182.jpg') no-repeat center center fixed;
+            
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список трат на комплектующие для компьютера</title>
+</head>
+<body>
+    
+    <div class="container">
+
+    <h1>Список комплектующих</h1>
+
+    <form action="/add" method="POST">
+        <label for="device">Устройство:</label>
+        <input type="text" id="device" name="device" required>
+        <label for="price">Цена:</label>
+        <input type="number" id="price" name="price" step="0.01" min="0" required>
+        <button type="submit">Добавить</button>
+    </form>
+
+    <ul>
+        {% for part in parts %}
+            <li>{{ part.device }} - {{ part.price }} ₽ <a href="/delete/{{ part.id }}"><p><span style="color: white;">Удалить</span></p></a></li>
+        {% endfor %}
+    </ul>
+
+    <p>Итого: {{ total_cost }} ₽</p>
+    </div>
+</body>
+</html>
